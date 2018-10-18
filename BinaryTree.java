@@ -9,7 +9,7 @@ import java.io.*;
  * @author Tim Pierson, Winter 2018, added code to manually build tree in main
  */
 
-public class BinaryTree<E> {
+public class BinaryTree<E> implements Comparable<E> {
 	private BinaryTree<E> left, right;	// children; can be null
 	E data;
 
@@ -197,7 +197,6 @@ public class BinaryTree<E> {
 	/**
 	 * Some tree testing
 	 */
-	/*
 	public static void main(String[] args) throws IOException {
 		//manually build a tree
 		BinaryTree<String> root = new BinaryTree<String>("G");
@@ -243,5 +242,6 @@ public class BinaryTree<E> {
 		System.out.println(itol);
 		System.out.println("height:" + itol.height());
 		System.out.println("size:" + itol.size());
-	}*/
+	}
+
 }

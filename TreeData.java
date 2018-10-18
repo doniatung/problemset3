@@ -1,5 +1,5 @@
 
-public class TreeData {
+public class TreeData  {
 	private char key;
 	private int value;
 	

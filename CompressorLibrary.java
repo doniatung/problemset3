@@ -118,15 +118,18 @@ public class CompressorLibrary {
 	  * @return					returns a PriorityQueue with frequencyMap data stored in nodes in a Binary Tree 
 	  */
 	 public static PriorityQueue<BinaryTree<TreeData>> makeCharTree(HashMap<Character, Integer> frequencyMap) {
-		 PriorityQueue<BinaryTree<TreeData>> q = new PriorityQueue<BinaryTree<TreeData>>();
+		
+		 PriorityQueue<BinaryTree<TreeData>> q = new PriorityQueue<BinaryTree<TreeData>>(new TreeComparator<Object>());
 		 //creates an array of the keys in the frequency map 
-		 Object[] keyArray = frequencyMap.keySet().toArray();
+		 Set<Character> kSet = frequencyMap.keySet();
 		 //for each key in the map, create a new tree node with the key and value stored
 		 //then add that individual tree node to the priorityqueue
-		 for (int i = 0; i < keyArray.length; i ++){
-			 TreeData td = new TreeData((Character)keyArray[i], frequencyMap.get(keyArray[i]));
+		 //for (int i = 0; i < keyArray.length; i ++){
+		 for(char c : kSet) {	
+		 	TreeData td = new TreeData(c, frequencyMap.get(c));
 			 q.add(new BinaryTree<TreeData>(td));
 		 }
+		 System.out.println(q);
 		 return q;
 	 }
 	 
@@ -143,7 +146,10 @@ public class CompressorLibrary {
 			 //create a new tree with children of the two smallest values in the priorityqueue
 			 //set the data of that tree node to the sum of their two values
 			 //add this new tree to the tree priorityqueue
-			 BinaryTree<TreeData> tree = new BinaryTree<TreeData>(null, origTree.poll(), origTree.poll()); 
+			 BinaryTree<TreeData> tree = new BinaryTree<TreeData>(new TreeData(' ', 0), origTree.poll(), origTree.poll());
+			 System.out.println(origTree);
+			 System.out.println(tree.getLeft());
+			 System.out.println(tree.getRight());
 			 tree.data.setValue(tree.getLeft().data.getValue()+tree.getRight().data.getValue());
 			 origTree.add(tree);
 		 }
@@ -194,4 +200,3 @@ public class CompressorLibrary {
 	 }
 	 
 }
-	
