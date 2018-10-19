@@ -24,4 +24,8 @@ public class TreeData  {
 		this.value = value;
 	}
 	
+	@Override
+	public String toString() {
+		return "Tree with key: "  + this.getKey() + " and value: " + this.getValue();
+	}
 }
